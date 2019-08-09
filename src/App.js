@@ -1,26 +1,73 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Route, Redirect, Link, Switch } from 'react-router-dom';
+import {connect} from 'react-redux'
+import MoviesContainer from './containers/MoviesContainer'
+import MovieShowContainer from './containers/MovieShowContainer'
+import Api from './services/api';
+import {fetchMovies, setPageMax} from './actions'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// import Api from './services/api';
+// {console.log(this.props.fetchMovies("yote"))}
+// {console.log(this.props)}
+
+class App extends Component {
+
+  fetchMovies = () => {
+    Api.fetchMovies(this.props.page)
+    .then(movies => {
+      this.props.setPageMax(Math.ceil(movies.total/24))
+      this.props.fetchMovies(movies.movies)
+    })
+  }
+
+  componentDidMount(){
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <h1>People's Republic of Movies</h1>
+        {this.fetchMovies()}
+        <Switch>
+          <Route exact path='/' component={MoviesContainer}/>
+          <Route exact path='/movies/all' component={MoviesContainer}/>
+          <Route exact path='/movies/:id' component={MovieShowContainer}/>
+        </Switch>
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    page: state.page
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMovies: (movies) => {
+      dispatch(fetchMovies(movies))
+    },
+    setPageMax: (pageNumber) => {
+      dispatch(setPageMax(pageNumber))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// import React, { Component } from 'react';
+//
+// class Movie extends Component {
+//   render(){
+//     return (
+//       <div>
+//
+//       </div>
+//     )
+//   }
+// }
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(App);

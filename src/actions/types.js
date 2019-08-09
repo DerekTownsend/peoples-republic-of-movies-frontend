@@ -1,0 +1,8 @@
+export const FETCH_MOVIES = "FETCH_MOVIES"
+export const SET_PAGE = "SET_PAGE"
+export const DECREMENT_PAGE = "DECREMENT_PAGE"
+export const INCREMENT_PAGE = "INCREMENT_PAGE"
+export const SET_PAGE_MAX = "SET_PAGE_MAX"
+export const FIRST_PAGE = "FIRST_PAGE"
+export const LAST_PAGE = "LAST_PAGE"
+export const SHOW_MOVIE = "SHOW_MOVIE"
