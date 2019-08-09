@@ -6,7 +6,6 @@ import PageButtons from '../components/PageButtons';
 
 class MoviesContainer extends Component {
   displayMovies = () => {
-    // console.log(this.props.movies);
     return this.props.movies.map((movie) => {
       return <Movie movie={movie} key={movie.id}/>
     })

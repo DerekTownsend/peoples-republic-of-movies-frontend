@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import no_poster from '../no_poster.png';
 
 class Movie extends Component {
@@ -22,7 +23,7 @@ class Movie extends Component {
         <img src={this.props.movie.poster_url} alt={this.props.movie.title} onError={this.handleNoImage}/>
         <p>{this.calculateRating() }</p>
         <p>{this.props.movie.mpaa_rating}</p>
-        <button>See More</button>
+        <Link to={`/movies/${this.props.movie.id}`}>See More</Link>
       </div>
     )
   }

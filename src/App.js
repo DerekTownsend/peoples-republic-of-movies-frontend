@@ -4,6 +4,7 @@ import { Route, Redirect, Link, Switch } from 'react-router-dom';
 import {connect} from 'react-redux'
 import MoviesContainer from './containers/MoviesContainer'
 import MovieShowContainer from './containers/MovieShowContainer'
+import Navbar from './components/Navbar'
 import Api from './services/api';
 import {fetchMovies, setPageMax} from './actions'
 
@@ -29,6 +30,7 @@ class App extends Component {
       <div className="App">
         <h1>People's Republic of Movies</h1>
         {this.fetchMovies()}
+        <Navbar />
         <Switch>
           <Route exact path='/' component={MoviesContainer}/>
           <Route exact path='/movies/all' component={MoviesContainer}/>
