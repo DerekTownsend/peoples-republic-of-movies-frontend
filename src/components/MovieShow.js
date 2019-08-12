@@ -21,9 +21,10 @@ class MovieShow extends Component {
   }
   calculateRating= () =>{
     if (this.props.movie.ratings.length > 0) {
-      return this.props.movie.ratings.reduce((accumulator, currentVal)=>{
+      const rating = this.props.movie.ratings.reduce((accumulator, currentVal)=>{
         return currentVal.amount +accumulator
-      },0)/this.props.movie.ratings.length + "%";
+      },0)/this.props.movie.ratings.length;
+      return rating.toFixed(1) + "%";
     }else{
       return "No Ratings";
     }

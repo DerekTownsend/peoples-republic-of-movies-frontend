@@ -1,39 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Redirect, Link, Switch } from 'react-router-dom';
-import {connect} from 'react-redux'
+import { Route, Switch } from 'react-router-dom';
 import MoviesContainer from './containers/MoviesContainer'
 import MovieShowContainer from './containers/MovieShowContainer'
+import MovieSearchContainer from './containers/MovieSearchContainer'
 import Navbar from './components/Navbar'
-import Api from './services/api';
-import {fetchMovies, setPageMax} from './actions'
-
-// import Api from './services/api';
-// {console.log(this.props.fetchMovies("yote"))}
-// {console.log(this.props)}
 
 class App extends Component {
-
-  fetchMovies = () => {
-    Api.fetchMovies(this.props.page)
-    .then(movies => {
-      this.props.setPageMax(Math.ceil(movies.total/24))
-      this.props.fetchMovies(movies.movies)
-    })
-  }
-
-  componentDidMount(){
-  }
 
   render(){
     return (
       <div className="App">
         <h1>People's Republic of Movies</h1>
-        {this.fetchMovies()}
         <Navbar />
         <Switch>
           <Route exact path='/' component={MoviesContainer}/>
           <Route exact path='/movies/all' component={MoviesContainer}/>
+          <Route exact path='/movies/search/:term/:page' component={MovieSearchContainer}/>
           <Route exact path='/movies/:id' component={MovieShowContainer}/>
         </Switch>
       </div>
@@ -41,24 +24,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    page: state.page
-  }
-}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchMovies: (movies) => {
-      dispatch(fetchMovies(movies))
-    },
-    setPageMax: (pageNumber) => {
-      dispatch(setPageMax(pageNumber))
-    }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 
 // import React, { Component } from 'react';
 //
