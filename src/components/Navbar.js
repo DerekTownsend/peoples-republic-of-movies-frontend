@@ -6,7 +6,7 @@ class Navbar extends Component {
     return (
       <div>
         <Search />
-        <span>Movie</span>
+        <span>Movie(DROP MENU)</span>
 
       </div>
     )

@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import MoviesContainer from './containers/MoviesContainer'
 import MovieShowContainer from './containers/MovieShowContainer'
 import MovieSearchContainer from './containers/MovieSearchContainer'
+import ActorShowContainer from './containers/ActorShowContainer'
+import GenreShowContainer from './containers/GenreShowContainer'
 import Navbar from './components/Navbar'
 
 class App extends Component {
@@ -18,6 +20,8 @@ class App extends Component {
           <Route exact path='/movies/all' component={MoviesContainer}/>
           <Route exact path='/movies/search/:term/:page' component={MovieSearchContainer}/>
           <Route exact path='/movies/:id' component={MovieShowContainer}/>
+          <Route exact path='/actors/:id' component={ActorShowContainer}/>
+          <Route exact path='/genres/:id' component={GenreShowContainer}/>
         </Switch>
       </div>
     )

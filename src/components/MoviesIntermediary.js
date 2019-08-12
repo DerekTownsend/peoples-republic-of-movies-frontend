@@ -4,6 +4,7 @@ import Movie from '../components/Movie';
 
 class MoviesIntermediary extends Component {
   displayMovies = () => {
+    // console.log(this.props);
     return this.props.movies.map((movie) => {
       return <Movie movie={movie} key={movie.id}/>
     })

@@ -22,6 +22,7 @@ class MovieSearchContainer extends Component {
       <div>
       {this.fetchMovies()}
         <SearchPageButtons/>
+        <h2>Search Results For "{this.props.match.params.term}": </h2>
         <MoviesIntermediary/>
         <SearchPageButtons/>
       </div>

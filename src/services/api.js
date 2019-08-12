@@ -24,6 +24,14 @@ export default {
     return fetch(`${API_LINK}search`,reqObj)
     .then(resp => resp.json())
   },
+  fetchActor: (id) => {
+    return fetch(`${API_LINK}actors/${id}`)
+    .then(resp => resp.json())
+  },
+  fetchGenre: (id, pageNumber) => {
+    return fetch(`${API_LINK}genres/${id}?page=${pageNumber}`)
+    .then(resp => resp.json())
+  },
   // newSnack: (bodyObj) =>{
   //   let reqObj = {
   //     method: 'POST',

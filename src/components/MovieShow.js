@@ -14,8 +14,8 @@ class MovieShow extends Component {
         return <li key={item.id}><Link to={`/${type}/${item.id}`}>{item.name}</Link></li>
       })
     }else {
-      return items.split(",").map((item)=>{
-        return <li key={item}>{item}</li>
+      return items.split(",").map((item, index)=>{
+        return <li key={index}>{item}</li>
       })
     }
   }
