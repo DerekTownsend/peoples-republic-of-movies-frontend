@@ -10,6 +10,28 @@ export default {
     return fetch(`${API_LINK}movies/${id}`)
     .then(resp => resp.json())
   },
+  searchMovies: (term) =>{
+    // 'Authorization': `Bearer ${localStorage.getItem("user")}`,
+    let reqObj = {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json',
+          'Accept':'application/json'
+        },
+        body: JSON.stringify(term)
+      }
+      // ?page=${pageNumber}
+    return fetch(`${API_LINK}search`,reqObj)
+    .then(resp => resp.json())
+  },
+  fetchActor: (id) => {
+    return fetch(`${API_LINK}actors/${id}`)
+    .then(resp => resp.json())
+  },
+  fetchGenre: (id, pageNumber) => {
+    return fetch(`${API_LINK}genres/${id}?page=${pageNumber}`)
+    .then(resp => resp.json())
+  },
   // newSnack: (bodyObj) =>{
   //   let reqObj = {
   //     method: 'POST',

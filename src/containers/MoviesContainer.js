@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-// import Api from '../services/api';
-import Movie from '../components/Movie';
+import Api from '../services/api';
 import PageButtons from '../components/PageButtons';
+import {fetchMovies, setPageMax} from '../actions'
+import MoviesIntermediary from '../components/MoviesIntermediary';
 
 class MoviesContainer extends Component {
-  displayMovies = () => {
-    return this.props.movies.map((movie) => {
-      return <Movie movie={movie} key={movie.id}/>
+
+  fetchMovies = () => {
+    Api.fetchMovies(this.props.page)
+    .then(movies => {
+      this.props.setPageMax(Math.ceil(movies.total/24))
+      this.props.fetchMovies(movies.movies)
     })
   }
-
-  componentDidMount(){
-  }
-
   render(){
     return (
       <div>
+        {this.fetchMovies()}
         <PageButtons/>
-        <div className="movies">
-          {this.displayMovies()}
-        </div>
+        <MoviesIntermediary/>
         <PageButtons/>
       </div>
     )
@@ -29,12 +28,22 @@ class MoviesContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    movies: state.movies
+    page: state.page
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMovies: (movies) => {
+      dispatch(fetchMovies(movies))
+    },
+    setPageMax: (pageNumber) => {
+      dispatch(setPageMax(pageNumber))
+    }
+  }
+}
 
-export default connect(mapStateToProps)(MoviesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesContainer);
 
 // <button onClick={this.handleClick}>{this.props.page}</button>
 // connect(mapStateToProps, mapDispatchToProps)()

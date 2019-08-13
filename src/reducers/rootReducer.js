@@ -5,6 +5,8 @@ import usersReducer from './usersReducer';
 import pagesReducer from './pagesReducer';
 import maxPagesReducer from './maxPagesReducer';
 import movieReducer from './movieReducer';
+import actorReducer from './actorReducer';
+import genreReducer from './genreReducer';
 import thunk from 'redux-thunk'
 
 
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
   page: pagesReducer,
   maxPages: maxPagesReducer,
   movie: movieReducer,
+  actor: actorReducer,
+  genre: genreReducer,
 });
 
 export const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
