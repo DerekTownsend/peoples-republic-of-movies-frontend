@@ -1,4 +1,4 @@
-import {FETCH_MOVIES, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_MOVIE, SHOW_ACTOR, SHOW_GENRE} from './types'
+import {FETCH_MOVIES, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_MOVIE, SHOW_ACTOR, SHOW_GENRE, FETCH_USER, LOGOUT_USER} from './types'
 
 export function fetchMovies(movies) {
   return {
@@ -66,5 +66,18 @@ export function showGenre(genre) {
   return {
     type: SHOW_GENRE,
     genre
+  }
+}
+
+export function fetchUser(user) {
+  return {
+    type: FETCH_USER,
+    user
+  }
+}
+
+export function logoutUser() {
+  return {
+    type: LOGOUT_USER
   }
 }

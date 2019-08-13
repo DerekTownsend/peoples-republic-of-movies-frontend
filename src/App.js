@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
+import {connect} from 'react-redux'
 import MoviesContainer from './containers/MoviesContainer'
 import MovieShowContainer from './containers/MovieShowContainer'
 import MovieSearchContainer from './containers/MovieSearchContainer'
 import ActorShowContainer from './containers/ActorShowContainer'
 import GenreShowContainer from './containers/GenreShowContainer'
+import Login from './components/Login'
+import Register from './components/Register'
 import Navbar from './components/Navbar'
+import Api from './services/api';
+import { fetchUser} from './actions'
 
 class App extends Component {
+
+  getUser = () =>{
+    Api.getUser()
+    .then(user => {
+      console.log(user);
+      this.props.fetchUser(user.user)
+    })
+  }
 
   render(){
     return (
       <div className="App">
         <h1>People's Republic of Movies</h1>
+        {localStorage.getItem("user") ? this.getUser() : null}
         <Navbar />
         <Switch>
           <Route exact path='/' component={MoviesContainer}/>
+          <Route exact path='/login' component={Login}/>
+          <Route exact path='/register' component={Register}/>
           <Route exact path='/movies/all' component={MoviesContainer}/>
           <Route exact path='/movies/search/:term/:page' component={MovieSearchContainer}/>
           <Route exact path='/movies/:id' component={MovieShowContainer}/>
@@ -28,10 +44,16 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUser: (user) => {
+      dispatch(fetchUser(user))
+    },
+  }
+}
 
-
-export default App;
-
+// export default App;
+export default connect(null, mapDispatchToProps)(App);
 // import React, { Component } from 'react';
 //
 // class Movie extends Component {

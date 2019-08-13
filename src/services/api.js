@@ -32,6 +32,43 @@ export default {
     return fetch(`${API_LINK}genres/${id}?page=${pageNumber}`)
     .then(resp => resp.json())
   },
+  fetchUser: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(bodyObj)
+    }
+
+    return fetch(`${API_LINK}api/v1/login`, reqObj)
+      .then(resp => resp.json())
+  },
+  createUser: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}api/v1/users`, reqObj)
+      .then(resp => resp.json())
+  },
+  getUser: () =>{
+    // console.log(localStorage.getItem("user"));
+    const reqObj = {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      }
+    }
+
+    return fetch(`${API_LINK}api/v1/profile`, reqObj)
+      .then(resp => resp.json())
+  },
   // newSnack: (bodyObj) =>{
   //   let reqObj = {
   //     method: 'POST',

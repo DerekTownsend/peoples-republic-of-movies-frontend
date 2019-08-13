@@ -1,11 +1,12 @@
-// import {FETCH_MOVIES} from '../actions/types'
-//
-// export default function usersReducer(state = [], action) {
-//   switch (action.type) {
-//     case TEMP:
-//     console.log("In reducer");
-//       return state
-//     default:
-//       return state;
-//   }
-// }
+import {FETCH_USER, LOGOUT_USER} from '../actions/types'
+
+export default function usersReducer(state = {}, action) {
+  switch (action.type) {
+    case FETCH_USER:
+      return action.user
+    case LOGOUT_USER:
+      return state
+    default:
+      return state;
+  }
+}
