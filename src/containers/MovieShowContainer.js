@@ -23,26 +23,26 @@ class MovieShowContainer extends Component {
       this.props.history.push("/movies/all")
     }
   }
-  handleClick = (e) =>{
-    if (e.target.className === "unfavorite") {
-      const myFavorite = this.props.user.favorites.find((favorite)=> favorite.movie_id === this.props.movie.id)
-      Api.unfavoriteMovie(myFavorite.id)
-      .then(user => this.props.fetchUser(user))
 
-    }else if(e.target.className === "favorite"){
-      const bodyObj = {
-        favorite:{
-          user_id: this.props.user.id,
-          movie_id: this.props.movie.id
-        }
+  handleUnfavorite = ()=>{
+    const myFavorite = this.props.user.favorites.find((favorite)=> favorite.movie_id === this.props.movie.id)
+    Api.unfavoriteMovie(myFavorite.id)
+    .then(user => this.props.fetchUser(user))
+  }
+
+  handleFavorite = () => {
+    const bodyObj = {
+      favorite:{
+        user_id: this.props.user.id,
+        movie_id: this.props.movie.id
       }
-      Api.favoriteMovie(bodyObj)
-      .then(user => this.props.fetchUser(user))
     }
+    Api.favoriteMovie(bodyObj)
+    .then(user => this.props.fetchUser(user))
   }
 
   showFavButton = () =>{
-    return !this.props.user.movie_favorites.find((movie)=> movie.id === this.props.movie.id)  ? <button onClick={this.handleClick} className="favorite">Favorite</button> : <button onClick={this.handleClick} className="unfavorite">Unfavorite</button>
+    return !this.props.user.movie_favorites.find((movie)=> movie.id === this.props.movie.id)  ? <button onClick={this.handleFavorite} className="favorite">Favorite <i className="far fa-heart"></i></button> : <button onClick={this.handleUnfavorite} className="unfavorite">Unfavorite <i className="fas fa-heart"></i></button>
   }
 
   componentDidMount(){
@@ -50,7 +50,7 @@ class MovieShowContainer extends Component {
   }
   render(){
     return (
-      <div>
+      <div className="movie_show">
       {this.props.user.id ? this.showFavButton() : null}
       {this.props.movie.id ? <MovieShow/> : null}
       {this.props.movie.id ? <CommentsContainer /> : null}

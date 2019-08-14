@@ -28,7 +28,7 @@ class Register extends Component {
       if (!user['error']) {
         this.props.fetchUser(user.user)
         localStorage.setItem('user', user.jwt)
-        this.props.history.push("/profile")
+        this.props.history.push("/movies/all")
       }else{
         alert(user.error);
       }

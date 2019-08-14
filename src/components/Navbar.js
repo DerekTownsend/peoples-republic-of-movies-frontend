@@ -32,9 +32,11 @@ class Navbar extends Component {
 
   render(){
     return (
-      <div>
+      <div className="navbar">
+        <h1>People's Republic of Movies</h1>
         <Search />
-        <span>Movie(DROP MENU)</span>
+        <Link to="/movies/all">All Movies</Link>
+        <Link to="/profile">Profile</Link>
         {localStorage.getItem("user") ? this.displayLogOutOption() : this.displayLoginOptions()}
       </div>
     )

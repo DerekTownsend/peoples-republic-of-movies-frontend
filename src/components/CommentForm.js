@@ -37,7 +37,7 @@ class CommentForm extends Component {
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="create_comment">
         <input onChange={this.handleChange} id="title" name="title" value={this.state.title} placeholder="Title"/>
         <textarea onChange={this.handleChange} id="content" name="content" value={this.state.content} rows="4" cols="50" placeholder="Comment">
         </textarea>

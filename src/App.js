@@ -26,9 +26,8 @@ class App extends Component {
 
   render(){
     return (
-      <div className="App">
-        <h1>People's Republic of Movies</h1>
-        {localStorage.getItem("user") ? this.getUser() : null}
+      <div className="container">
+      {localStorage.getItem("user") ? this.getUser() : this.props.fetchUser({})}
         <Navbar />
         <Switch>
           <Route exact path='/' component={MoviesContainer}/>
@@ -57,7 +56,7 @@ const mapDispatchToProps = dispatch => {
 // export default App;
 export default connect(null, mapDispatchToProps)(App);
 // import React, { Component } from 'react';
-// import {connect} from 'react-redux'
+// // import {connect} from 'react-redux'
 //
 // class App extends Component {
 //   render(){
@@ -69,5 +68,10 @@ export default connect(null, mapDispatchToProps)(App);
 //   }
 // }
 //
+// // const mapStateToProps = (state) => {
+// //   return {
+// //     movie: state.movie
+// //   }
+// // }
 // export default App;
 // export default connect(mapStateToProps, mapDispatchToProps)(App);

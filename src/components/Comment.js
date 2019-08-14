@@ -9,20 +9,7 @@ class Comment extends Component {
     showEditForm: false
   }
   handleClick = (e) =>{
-    if (e.target.className === "unlike") {
-      const myLike = this.props.comment.likes.find((like)=> like.user_id === this.props.user.id)
-      Api.unlikeComment(myLike.id)
-      .then(movie => this.props.fetchComments(movie.movies.comments))
-    }else if(e.target.className === "like"){
-      const bodyObj = {
-        like:{
-          user_id: this.props.user.id,
-          comment_id: this.props.comment.id
-        }
-      }
-      Api.likeComment(bodyObj)
-      .then(movie => this.props.fetchComments(movie.movies.comments))
-    }else if(e.target.className === "edit"){
+    if(e.target.className === "edit"){
       this.setState({showEditForm: true})
     }else if(e.target.className === "delete"){
       Api.deleteComment(this.props.comment.id)
@@ -32,9 +19,25 @@ class Comment extends Component {
   updateEditState = ()=>{
     this.setState({showEditForm: false})
   }
+  handleLike = () => {
+    const bodyObj = {
+      like:{
+        user_id: this.props.user.id,
+        comment_id: this.props.comment.id
+      }
+    }
+    Api.likeComment(bodyObj)
+    .then(movie => this.props.fetchComments(movie.movies.comments))
+  }
+
+  handleUnlike = () => {
+    const myLike = this.props.comment.likes.find((like)=> like.user_id === this.props.user.id)
+    Api.unlikeComment(myLike.id)
+    .then(movie => this.props.fetchComments(movie.movies.comments))
+  }
 
   showLikeButtons = () =>{
-    return !this.props.comment.likes.find((like)=> like.user_id === this.props.user.id)  ? <button onClick={this.handleClick} className="like">Like</button> : <button onClick={this.handleClick} className="unlike">Unlike</button>
+    return !this.props.comment.likes.find((like)=> like.user_id === this.props.user.id)  ? <button onClick={this.handleLike} className="like">Like  <i className="far fa-thumbs-up"></i></button> : <button onClick={this.handleUnlike} className="unlike">Unlike  <i className="fas fa-thumbs-up"></i></button>
   }
   showEditDeleteButtons = () =>{
     return (
@@ -59,7 +62,7 @@ class Comment extends Component {
   }
   render(){
     return (
-      <div>
+      <div className="comment">
         {this.state.showEditForm ? <CommentEditForm comment={this.props.comment} updateEditState={this.updateEditState}/> : this.showComment()}
 
       </div>

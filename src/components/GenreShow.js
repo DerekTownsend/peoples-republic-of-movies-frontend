@@ -8,6 +8,10 @@ class GenreShow extends Component {
   // handleNoImage = (error) =>{
   //   error.target.src = no_poster
   // }
+  
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
 
   generateListItems = (items, type=null) =>{
     if (type) {

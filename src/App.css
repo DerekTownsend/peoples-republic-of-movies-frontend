@@ -1,11 +1,35 @@
-#active_button{
-  background-color: green;
-  color: white;
+body{
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  /* background-color: #fff200;
+background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
+  background-color: #fff200;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
+}
+
+.container {
+  width: 90%;
+  margin: 10em auto;
+}
+
+.navbar{
+  width: 100%;
+  position: fixed;
+  top:0;
+  left: 0;
+  /* background-color: #fff200;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
+  background-color: #fff200;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
+  z-index: 2;
+  height: 9em;
+  padding: .5em;
 }
 
 .movies {
-  width: 90%;
-  margin: 0 auto;
+  /* width: 90%;
+  margin: 0 auto; */
   padding: 1em;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -15,7 +39,8 @@
   border: .5em solid red;
   border-radius: 1em;
 }
- .movie {
+
+.movie {
   box-sizing: border-box;
   width: 95%;
   height: 95%;
@@ -27,15 +52,91 @@
   background: #fff;
   position: relative;
 }
- .movie img {
+ a{
+  color: blue;
+}
+.movies a{
+  color: red;
+  /* text-decoration: none; */
+}
+.movie img {
    width: 100%;
    max-height: 30em;
  }
 
- .page_buttons{
+ #active_button{
+   background-color: green;
+   color: white;
+ }
+
+.page_buttons{
    text-align: center;
    margin: 1em 0;
  }
- .page_buttons button{
+
+.page_buttons button{
    margin: 0 .2em;
  }
+
+form input{
+ display: block;
+}
+.search{
+  position: relative;
+  width: 50%;
+  height: 2.5em;
+  display: inline-block;
+}
+.search input{
+  display: inline;
+  font-size: 1.2em;
+  padding: .2em;
+}
+.search button{
+  background: none;
+  border:none;
+  font-size: 1.4em;
+  right: -2%;
+  top: 5%;
+  position: absolute;
+}
+.navbar div{
+  display: inline-block;
+}
+.navbar button,
+.navbar a{
+  margin-left: 2em;
+  display: inline-block;
+}
+.navbar a{
+  color: yellow;
+  text-decoration: none;
+}
+.navbar a,
+.navbar div button{
+  font-size: 1.2em;
+  color: yellow;
+  background: none;
+  border: none;
+}
+#search_input{
+  width: 100%;
+}
+
+.comment {
+  padding: .5em;
+  margin: 1em 0;
+  border-top: solid .2em black;
+}
+.create_comment input#title,
+.create_comment textarea{
+    min-width: 100%;
+    max-width: 100%;
+    font-size: 1.2em;
+    padding: .2em;
+    box-sizing: border-box;
+    border: none;
+}
+.create_comment input#title {
+  border-bottom: grey .1em solid;
+}
