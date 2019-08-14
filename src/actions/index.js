@@ -1,4 +1,4 @@
-import {FETCH_MOVIES, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_MOVIE, SHOW_ACTOR, SHOW_GENRE, FETCH_USER, LOGOUT_USER, FETCH_COMMENTS, ADD_COMMENT, LIKE, UNLIKE} from './types'
+import {FETCH_MOVIES, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_MOVIE, SHOW_ACTOR, SHOW_GENRE, FETCH_USER, LOGOUT_USER, FETCH_COMMENTS, ADD_COMMENT, LIKE, UNLIKE, EDIT_COMMENT, DELETE_COMMENT} from './types'
 
 export function fetchMovies(movies) {
   return {
@@ -107,5 +107,19 @@ export function unlikeComment(like) {
   return {
     type: UNLIKE,
     like
+  }
+}
+
+export function editComment(comment) {
+  return {
+    type: EDIT_COMMENT,
+    comment
+  }
+}
+
+export function deleteComment(id) {
+  return {
+    type: DELETE_COMMENT,
+    id
   }
 }

@@ -119,6 +119,25 @@ export default {
     return fetch(`${API_LINK}favorites/${id}`, reqObj)
       .then(resp => resp.json())
   },
+  editComment: (bodyObj, id) =>{
+    const reqObj = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}comments/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+  deleteComment: (id) =>{
+    const reqObj = {
+      method: 'DELETE'
+    }
+    return fetch(`${API_LINK}comments/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
 
   // newSnack: (bodyObj) =>{
   //   let reqObj = {
