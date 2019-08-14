@@ -69,6 +69,57 @@ export default {
     return fetch(`${API_LINK}api/v1/profile`, reqObj)
       .then(resp => resp.json())
   },
+  createComment: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}comments`, reqObj)
+      .then(resp => resp.json())
+  },
+  likeComment: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}likes`, reqObj)
+      .then(resp => resp.json())
+  },
+  unlikeComment: (id) =>{
+    const reqObj = {
+      method: 'DELETE'
+    }
+    return fetch(`${API_LINK}likes/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+  favoriteMovie: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}favorites`, reqObj)
+      .then(resp => resp.json())
+  },
+  unfavoriteMovie: (id) =>{
+    const reqObj = {
+      method: 'DELETE'
+    }
+    return fetch(`${API_LINK}favorites/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+
   // newSnack: (bodyObj) =>{
   //   let reqObj = {
   //     method: 'POST',

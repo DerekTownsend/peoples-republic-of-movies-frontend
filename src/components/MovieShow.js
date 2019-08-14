@@ -39,6 +39,7 @@ class MovieShow extends Component {
     // console.log(newDate.getFullYear());
       return this.props.movie.released_date;
   }
+  // {!this.props.comment.likes.find((like)=> like.user_id === this.props.user.id) ? <button onClick={this.handleClick} className="like">Like</button> : <button onClick={this.handleClick} className="unlike">Unlike</button>}
 
   render(){
     return (

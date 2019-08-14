@@ -7,6 +7,7 @@ import MovieShowContainer from './containers/MovieShowContainer'
 import MovieSearchContainer from './containers/MovieSearchContainer'
 import ActorShowContainer from './containers/ActorShowContainer'
 import GenreShowContainer from './containers/GenreShowContainer'
+import ProfileContainer from './containers/ProfileContainer'
 import Login from './components/Login'
 import Register from './components/Register'
 import Navbar from './components/Navbar'
@@ -19,7 +20,7 @@ class App extends Component {
     Api.getUser()
     .then(user => {
       console.log(user);
-      this.props.fetchUser(user.user)
+      this.props.fetchUser(user)
     })
   }
 
@@ -33,6 +34,7 @@ class App extends Component {
           <Route exact path='/' component={MoviesContainer}/>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/register' component={Register}/>
+          <Route exact path='/profile' component={ProfileContainer}/>
           <Route exact path='/movies/all' component={MoviesContainer}/>
           <Route exact path='/movies/search/:term/:page' component={MovieSearchContainer}/>
           <Route exact path='/movies/:id' component={MovieShowContainer}/>
@@ -55,8 +57,9 @@ const mapDispatchToProps = dispatch => {
 // export default App;
 export default connect(null, mapDispatchToProps)(App);
 // import React, { Component } from 'react';
+// import {connect} from 'react-redux'
 //
-// class Movie extends Component {
+// class App extends Component {
 //   render(){
 //     return (
 //       <div>
@@ -66,4 +69,5 @@ export default connect(null, mapDispatchToProps)(App);
 //   }
 // }
 //
+// export default App;
 // export default connect(mapStateToProps, mapDispatchToProps)(App);

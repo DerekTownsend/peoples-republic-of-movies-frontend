@@ -28,7 +28,7 @@ class Register extends Component {
       if (!user['error']) {
         this.props.fetchUser(user.user)
         localStorage.setItem('user', user.jwt)
-        this.props.history.push("/movies/all")
+        this.props.history.push("/profile")
       }else{
         alert(user.error);
       }
@@ -56,7 +56,7 @@ class Register extends Component {
 
           <label htmlFor="password">Password</label>
           <input onChange={this.handleChange} id="password" name="password" value={this.state.password}/>
-          <input  type="submit"/>
+          <input  type="submit" value="Register"/>
           <p>Already have an account? <Link to="/login">Login</Link></p>
 
         </form>

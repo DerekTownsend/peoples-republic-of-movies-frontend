@@ -23,11 +23,10 @@ class Login extends Component {
     }
     Api.fetchUser(bodyObj)
     .then(user => {
-      console.log(user);
       if (!user['error']) {
         this.props.fetchUser(user.user)
         localStorage.setItem('user', user.jwt)
-        this.props.history.push("/movies/all")
+        this.props.history.push("/profile")
       }else{
         alert(user.error);
       }
@@ -46,7 +45,7 @@ class Login extends Component {
           <input onChange={this.handleChange} id="username" name="username" value={this.state.username}/>
           <label htmlFor="password">Password</label>
           <input onChange={this.handleChange} id="password" name="password" type="password" value={this.state.password}/>
-          <input  type="submit"/>
+          <input type="submit" value="Login"/>
         </form>
         <p>Dont have an account? <Link to="/register">Register</Link></p>
       </div>
