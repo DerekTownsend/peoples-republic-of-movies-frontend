@@ -118,14 +118,24 @@ form input{
   top: 19%;
   position: absolute;
 }
-.navbar div{
-  display: inline-block;
+.navbar .main{
+  display: flex;
+  width: 90%;
+  align-items: center;
+  margin-left: 6.5em;
+  /* margin: 0 auto; */
+  /* justify-content: space-between; */
 }
+.navbar div div{
+  display: inline;
+}
+
 .navbar button,
 .navbar a{
   margin-left: 2em;
   display: inline-block;
 }
+
 .navbar a{
   color: #fff200;
   text-decoration: none;
@@ -146,6 +156,9 @@ form input{
   display: inline-block;
   margin-left: 1em;
   text-shadow: -.03em -.03em 0 #000, .03em -.03em 0 #000, -.03em .03em 0 #000, .03em .03em 0 #000;
+}
+.navbar form button{
+  color: black;
 }
 #search_input{
   padding: .5em;

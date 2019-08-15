@@ -36,10 +36,12 @@ class Navbar extends Component {
       <div className="navbar">
       <img src={Logo} alt="logo"/>
         <h1>People's Republic of Movies</h1><br/>
+        <div className="main">
         <Search />
         <Link to="/movies/all">All Movies</Link>
         <Link to="/profile">Profile</Link>
         {localStorage.getItem("user") ? this.displayLogOutOption() : this.displayLoginOptions()}
+        </div>
       </div>
     )
   }
