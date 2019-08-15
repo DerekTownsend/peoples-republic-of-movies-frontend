@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
 import no_poster from '../no_poster.png';
+import Api from '../services/api';
+import { showMovie, fetchUser} from '../actions'
+import CreateRatingForm from './CreateRatingForm';
+import EditRatingForm from './EditRatingForm';
 
 class MovieShow extends Component {
+
+  state = {
+    displayRatingForm: false,
+    displayRatingEditForm: false,
+  }
   handleNoImage = (error) =>{
     error.target.src = no_poster
   }
@@ -19,6 +28,7 @@ class MovieShow extends Component {
       })
     }
   }
+
   calculateRating= () =>{
     if (this.props.movie.ratings.length > 0) {
       const rating = this.props.movie.ratings.reduce((accumulator, currentVal)=>{
@@ -30,28 +40,79 @@ class MovieShow extends Component {
     }
   }
 
-  showDate = () => {
-    // console.log(this.props.movie.released_date);
-    // const date = Date.parse(this.props.movie.released_date)
-    // const newDate = new Date(date)
-    // console.log(newDate.getMonth());
-    // console.log(newDate.getDate());
-    // console.log(newDate.getFullYear());
-      return this.props.movie.released_date;
+  displayRatingOptions = ()=> {
+     const yourRating = this.props.movie.ratings.find((rating)=> rating.user.id === this.props.user.id)
+      if (yourRating) {
+        return this.displayEditDeleteRating(yourRating)
+      } else {
+        return this.displayCreateRatingBtn()
+      }
   }
 
+  handleClick = (e)=>{
+    const name = e.target.className
+    if(name === "create"){
+      this.setState({displayRatingForm: true})
+    }else if (name === "delete" ) {
+      Api.deleteRating(this.props.movie.ratings.find((rating)=> rating.user.id === this.props.user.id).id)
+      .then(movie => {
+        this.props.showMovie(movie.movies)
+      })
+    }else if (name === "edit" ) {
+      this.setState({displayRatingEditForm: true})
+    }
+  }
+
+
+  displayEditDeleteRating = (rating)=>{
+    return(
+      <div>
+        {this.state.displayRatingEditForm ? null :<p>Your Rating: {rating.amount}%</p>}
+        <button className="delete" onClick={this.handleClick}>Delete Rating</button>
+        <button className="edit" onClick={this.handleClick}>Edit Rating</button>
+      </div>
+    )
+  }
+
+  displayCreateRatingBtn = ()=>{
+    // return <CreateRatingForm/>
+    return <button className="create" onClick={this.handleClick}>Create Rating</button>
+  }
+  updateDisplayRatingForm = ()=>{
+    this.setState({displayRatingForm: false})
+  }
+
+  updateDisplayEditRatingForm = ()=>{
+    this.setState({displayRatingEditForm: false})
+  }
+
+  getUser = () =>{
+    Api.getUser()
+    .then(user => {
+      console.log(user);
+      this.props.fetchUser(user)
+    })
+  }
+  componentDidMount(){
+    localStorage.getItem("user") ? this.getUser() : this.props.fetchUser({})
+  }
   render(){
     return (
       <div>
         <h2>{this.props.movie.title}</h2>
         <img src={this.props.movie.poster_url} alt={this.props.movie.title} onError={this.handleNoImage}/>
         <p>Rating: {this.calculateRating()}</p>
+        {this.props.user.id ? this.displayRatingOptions() : null}
+        { this.state.displayRatingForm ? <CreateRatingForm updateDisplayRatingForm={this.updateDisplayRatingForm}/>: null}
+
+        { this.state.displayRatingEditForm ? <EditRatingForm updateDisplayEditRatingForm={this.updateDisplayEditRatingForm} rating={this.props.movie.ratings.find((rating)=> rating.user.id === this.props.user.id)}/>: null}
+
         <p>Plot: {this.props.movie.plot}</p>
         <p>Country: {this.props.movie.country}</p>
         <p>Language: {this.props.movie.language}</p>
         <p>Rated: {this.props.movie.mpaa_rating}</p>
         <p>Producer: {this.props.movie.producer}</p>
-        <p>Released Date: {this.showDate()}</p>
+        <p>Released Date: {this.props.movie.released_date}</p>
         <h4>Directors</h4>
         <ul>
           {this.generateListItems(this.props.movie.director)}
@@ -74,8 +135,29 @@ class MovieShow extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    movie: state.movie
+    movie: state.movie,
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    showMovie: (movie) => {
+      dispatch(showMovie(movie))
+    },
+    fetchUser: (user) => {
+      dispatch(fetchUser(user))
+    },
   }
 }
 // export default MovieShow;
-export default connect(mapStateToProps, null)(MovieShow);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieShow);
+// showDate = () => {
+  // console.log(this.props.movie.released_date);
+  // const date = Date.parse(this.props.movie.released_date)
+  // const newDate = new Date(date)
+  // console.log(newDate.getMonth());
+  // console.log(newDate.getDate());
+  // console.log(newDate.getFullYear());
+  // return this.props.movie.released_date;
+// }

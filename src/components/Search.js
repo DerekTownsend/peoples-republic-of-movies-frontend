@@ -38,9 +38,9 @@ class Search extends Component {
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleChange} name="term" value={this.state.term}/>
-        <input type="submit" value="Search"/>
+      <form onSubmit={this.handleSubmit} className="search">
+        <input onChange={this.handleChange} name="term" value={this.state.term} placeholder="Search by Movie Title" id="search_input"/>
+        <button type="submit"><i className="fas fa-search"></i></button>
       </form>
     )
   }

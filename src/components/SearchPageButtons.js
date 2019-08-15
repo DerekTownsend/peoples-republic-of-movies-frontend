@@ -7,8 +7,12 @@ class SearchPageButtons extends Component {
 
   generateButtons = () => {
     let buttons = []
-    let newPageCount = this.props.page + 10 >= this.props.maxPages ? this.props.maxPages : this.props.page + 10
-    for (var i = this.props.page; i <= newPageCount; i++) {
+
+    let pageStart = this.props.page <= 5 ? 1 : this.props.page - 5;
+
+    let newPageCount = pageStart + 10 >= this.props.maxPages ? this.props.maxPages : pageStart + 10
+
+    for (var i = pageStart; i <= newPageCount; i++) {
       if (i === this.props.page) {
         buttons.push(<button key={i} className="change_page" onClick={this.handleClick} id="active_button">{i}</button>)
       }else {

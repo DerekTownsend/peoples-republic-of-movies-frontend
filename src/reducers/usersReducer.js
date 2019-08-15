@@ -5,7 +5,7 @@ export default function usersReducer(state = {}, action) {
     case FETCH_USER:
       return action.user
     case LOGOUT_USER:
-      return state
+      return {}
     default:
       return state;
   }

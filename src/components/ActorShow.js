@@ -19,6 +19,9 @@ class ActorShow extends Component {
       })
     }
   }
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
 
   showDate = () => {
     // console.log(this.props.actor.released_date);

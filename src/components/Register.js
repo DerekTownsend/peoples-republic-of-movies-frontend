@@ -39,10 +39,10 @@ class Register extends Component {
 
   render(){
     return (
-      <div>
+      <div className="register_div">
         {localStorage.getItem("user") ? <Redirect to="/movies/all"/> : null}
         <h2>Register</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="register">
           <label htmlFor="username">Username</label>
           <input onChange={this.handleChange} id="username" name="username" value={this.state.username}/>
 
@@ -51,14 +51,14 @@ class Register extends Component {
           <label htmlFor="lastname">Last Name</label>
           <input onChange={this.handleChange} id="lastname" name="lastname" value={this.state.lastname}/>
 
-          <label htmlFor="email">email</label>
+          <label htmlFor="email">Email</label>
           <input onChange={this.handleChange} id="email" name="email" value={this.state.email}/>
 
           <label htmlFor="password">Password</label>
           <input onChange={this.handleChange} id="password" name="password" value={this.state.password}/>
-          <input  type="submit"/>
-          <p>Already have an account? <Link to="/login">Login</Link></p>
+          <input  type="submit" value="Register"/>
 
+          <p>Already have an account? <Link to="/login">Login</Link></p>
         </form>
       </div>
     )
