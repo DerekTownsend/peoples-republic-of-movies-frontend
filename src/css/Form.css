@@ -1,0 +1,106 @@
+.register_div h2,
+.login_div h2{
+  text-align: center;
+  font-size: 2em;
+}
+
+.register label,
+.register input,
+.login label,
+.login input{
+  font-size: 1.4em;
+}
+.register input,
+.login input{
+  padding: .3em;
+  border-radius: .5em;
+  border: none;
+}
+label[for=username]{
+  grid-area: username_label;
+}
+#username {
+  grid-area: username;
+}
+
+label[for=firstname]{
+  grid-area: firstname_label;
+}
+
+#firstname {
+  grid-area: firstname;
+}
+
+label[for=lastname]{
+  grid-area: lastname_label;
+}
+
+#lastname {
+  grid-area: lastname;
+}
+label[for=email]{
+  grid-area: email_label;
+}
+
+#email {
+  grid-area: email;
+}
+label[for=password]{
+  grid-area: password_label;
+}
+
+#password {
+  grid-area: password;
+}
+.register input[type=submit],
+.login input[type=submit]{
+    grid-area: submit;
+    place-self: center;
+    background: none;
+    color: #fff200;
+    border: #fff200 solid .1em;
+}
+.register p,
+.login p{
+  grid-area: login;
+  place-self: center;
+}
+
+.register{
+  width: 60%;
+  height: 100%;
+  margin: 0 auto;
+  display:grid;
+   grid-gap: 1em .9em;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "username_label username_label"
+    "username username"
+    "firstname_label lastname_label"
+    "firstname lastname"
+    "email_label email_label"
+    "email email"
+    "password_label password_label"
+    "password password"
+    "submit submit"
+    "login login"
+}
+
+.login{
+  width: 60%;
+  height: 100%;
+  margin: 0 auto;
+  display:grid;
+   grid-gap: 1em .9em;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "username_label username_label"
+    "username username"
+    "password_label password_label"
+    "password password"
+    "submit submit"
+    "login login"
+}
+input{
+  display:inline-block;
+}

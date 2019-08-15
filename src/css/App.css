@@ -4,13 +4,23 @@ body{
   min-height: 100vh;
   /* background-color: #fff200;
 background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
-  background-color: #fff200;
+  background-color: red;
   background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+label {
+  color: #fff200;
 }
 
 .container {
   width: 90%;
-  margin: 10em auto;
+  margin: 12em auto 5em;
 }
 
 .navbar{
@@ -20,11 +30,12 @@ background-image: url("https://www.transparenttextures.com/patterns/45-degree-fa
   left: 0;
   /* background-color: #fff200;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
-  background-color: #fff200;
+  background-color: red;
   background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
   z-index: 2;
   height: 9em;
   padding: .5em;
+  border-bottom: .1em solid #fff200;
 }
 
 .movies {
@@ -35,8 +46,8 @@ background-image: url("https://www.transparenttextures.com/patterns/45-degree-fa
   grid-template-columns: 25% 25% 25% 25%;
   place-items: center;
   place-content: space-around;
-  background-color: red;
-  border: .5em solid red;
+  /* background-color: red; */
+  /* border: .5em solid red; */
   border-radius: 1em;
 }
 
@@ -47,16 +58,17 @@ background-image: url("https://www.transparenttextures.com/patterns/45-degree-fa
   display: inline;
   padding: .5em;
   margin: .75em;
-  border: .5em solid yellow;
+  border: .1em solid #fff200;
   border-radius: .5em;
-  background: #fff;
+  /* background: #fff200; */
   position: relative;
+  text-align: center;
 }
  a{
   color: blue;
 }
 .movies a{
-  color: red;
+  color: #fff200;
   /* text-decoration: none; */
 }
 .movie img {
@@ -65,8 +77,8 @@ background-image: url("https://www.transparenttextures.com/patterns/45-degree-fa
  }
 
  #active_button{
-   background-color: green;
-   color: white;
+
+   border: #fff200 solid .1em;
  }
 
 .page_buttons{
@@ -76,6 +88,12 @@ background-image: url("https://www.transparenttextures.com/patterns/45-degree-fa
 
 .page_buttons button{
    margin: 0 .2em;
+   font-size: 1em;
+   border-radius: 1em;
+   /* background-color: red; */
+   border: black solid .06em;
+   background: none;
+   color: #fff200;
  }
 
 form input{
@@ -97,7 +115,7 @@ form input{
   border:none;
   font-size: 1.4em;
   right: -2%;
-  top: 5%;
+  top: 19%;
   position: absolute;
 }
 .navbar div{
@@ -109,18 +127,31 @@ form input{
   display: inline-block;
 }
 .navbar a{
-  color: yellow;
+  color: #fff200;
   text-decoration: none;
 }
 .navbar a,
 .navbar div button{
   font-size: 1.2em;
-  color: yellow;
+  color: #fff200;
   background: none;
   border: none;
 }
+.navbar img{
+  width:5em;
+  display: inline;
+  margin-bottom: -1em;
+}
+.navbar h1{
+  display: inline-block;
+  margin-left: 1em;
+  text-shadow: -.03em -.03em 0 #000, .03em -.03em 0 #000, -.03em .03em 0 #000, .03em .03em 0 #000;
+}
 #search_input{
+  padding: .5em;
   width: 100%;
+  border-radius: 1em;
+  border: none;
 }
 
 .comment {
@@ -140,3 +171,19 @@ form input{
 .create_comment input#title {
   border-bottom: grey .1em solid;
 }
+/* .login,
+.register {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+} */
+
+/* .login input,
+.register input{
+  margin: auto;
+} */
+/* .movie p,
+.movie h3,
+.movie a{
+  color: red;
+} */

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
+import './css/Form.css';
 import { Route, Switch } from 'react-router-dom';
 import {connect} from 'react-redux'
 import MoviesContainer from './containers/MoviesContainer'

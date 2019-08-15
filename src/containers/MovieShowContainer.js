@@ -47,6 +47,7 @@ class MovieShowContainer extends Component {
 
   componentDidMount(){
     this.getMovie()
+    window.scrollTo(0, 0)
   }
   render(){
     return (

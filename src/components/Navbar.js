@@ -4,6 +4,7 @@ import Search from './Search'
 import {connect} from 'react-redux'
 import { logoutUser} from '../actions'
 import { withRouter } from "react-router";
+import Logo from '../images/logo_prm.png';
 
 class Navbar extends Component {
 
@@ -33,7 +34,8 @@ class Navbar extends Component {
   render(){
     return (
       <div className="navbar">
-        <h1>People's Republic of Movies</h1>
+      <img src={Logo} alt="logo"/>
+        <h1>People's Republic of Movies</h1><br/>
         <Search />
         <Link to="/movies/all">All Movies</Link>
         <Link to="/profile">Profile</Link>

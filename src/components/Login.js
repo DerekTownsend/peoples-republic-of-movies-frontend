@@ -37,17 +37,17 @@ class Login extends Component {
 
   render(){
     return (
-      <div>
+      <div className="login_div">
       {localStorage.getItem("user") ? <Redirect to="/movies/all"/> : null}
         <h2>Login</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form className="login" onSubmit={this.handleSubmit}>
           <label htmlFor="username">Username</label>
           <input onChange={this.handleChange} id="username" name="username" value={this.state.username}/>
           <label htmlFor="password">Password</label>
           <input onChange={this.handleChange} id="password" name="password" type="password" value={this.state.password}/>
           <input type="submit" value="Login"/>
+          <p>Dont have an account? <Link to="/register">Register</Link></p>
         </form>
-        <p>Dont have an account? <Link to="/register">Register</Link></p>
       </div>
     )
   }
