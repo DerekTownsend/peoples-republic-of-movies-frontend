@@ -13,7 +13,7 @@ class UserCommentsContainer extends Component {
 
   render(){
     return (
-      <div>
+      <div className="profile_page">
 
         <h2>Comments</h2>
         <PageButtons/>

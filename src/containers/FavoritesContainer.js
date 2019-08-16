@@ -17,7 +17,7 @@ class FavoritesContainer extends Component {
 
   render(){
     return (
-      <div>
+      <div className="profile_page">
         <h3>Favorite Movies</h3>
         {this.fetchUserMovies()}
         <PageButtons/>

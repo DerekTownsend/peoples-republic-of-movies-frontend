@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import { fetchComments, setPageMax} from '../actions'
 import FavoritesContainer from './FavoritesContainer'
 import UserCommentsContainer from './UserCommentsContainer'
+import UserRatingsContainer from './UserRatingsContainer'
 import Api from '../services/api';
 
 class ProfileContainer extends Component {
@@ -21,7 +22,7 @@ class ProfileContainer extends Component {
       this.getComments()
       return <UserCommentsContainer />
     }else if (this.props.match.params.type === "ratings") {
-      return <h3>Ratings</h3>
+      return <UserRatingsContainer />
     } else {
       this.props.history.push("/profile/favorites")
     }
@@ -29,11 +30,11 @@ class ProfileContainer extends Component {
 
   render(){
     return (
-      <div>
+      <div className="profile">
         <h2>Welcome Back {this.props.user.firstname}</h2>
-        <Link to="/profile/favorites">Favorite Movies</Link>
-        <Link to="/profile/comments">Comments</Link>
-        <Link to="/profile/ratings">Ratings</Link>
+        <Link to="/profile/favorites" className={this.props.match.params.type === "favorites" ? "active_profile profile_nav" : "profile_nav"}>Favorite Movies</Link>
+        <Link to="/profile/comments" className={this.props.match.params.type === "comments" ? "active_profile profile_nav" : "profile_nav"}>Comments</Link>
+        <Link to="/profile/ratings" className={this.props.match.params.type === "ratings" ? "active_profile profile_nav" : "profile_nav"}>Ratings</Link>
         {this.updatePage()}
 
       </div>
