@@ -7,7 +7,9 @@ import { withRouter } from "react-router";
 import Logo from '../images/logo_prm.png';
 
 class Navbar extends Component {
-
+  state = {
+    showNav: false
+  }
   displayLoginOptions = () =>{
     return (
       <div>
@@ -26,22 +28,25 @@ class Navbar extends Component {
   displayLogOutOption = () =>{
     return (
       <div>
+        <Link to="/profile">Profile</Link>
         <button onClick={this.handleLogout}>Logout</button>
       </div>
     )
   }
-
+  displayNav = () =>{
+    this.setState({showNav: !this.state.showNav})
+  }
   render(){
     return (
       <div className="navbar">
       <img src={Logo} alt="logo"/>
         <h1>People's Republic of Movies</h1><br/>
-        <div className="main">
-        <Search />
-        <Link to="/movies/all">All Movies</Link>
-        <Link to="/profile">Profile</Link>
-        {localStorage.getItem("user") ? this.displayLogOutOption() : this.displayLoginOptions()}
+        <div className={this.state.showNav ? "main" : "main responsive"}>
+          <Search />
+          <Link to="/movies/all">All Movies</Link>
+          {localStorage.getItem("user") ? this.displayLogOutOption() : this.displayLoginOptions()}
         </div>
+        <button className="mobile_buttton"onClick={this.displayNav}>&#9776;</button>
       </div>
     )
   }

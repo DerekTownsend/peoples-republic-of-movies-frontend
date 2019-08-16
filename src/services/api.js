@@ -169,17 +169,34 @@ export default {
     return fetch(`${API_LINK}ratings/${id}`, reqObj)
       .then(resp => resp.json())
   },
-
-  // newSnack: (bodyObj) =>{
-  //   let reqObj = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Authorization': `Bearer ${localStorage.getItem("user")}`,
-  //       'Content-Type':'application/json',
-  //       'Accept':'application/json'
-  //     },
-  //     body: JSON.stringify(bodyObj)
-  //   }
-  //   return fetch(`${API_LINK}snacks`, reqObj).then(response => response.json())
-  // },
+  fetchUserMovies: (pageNumber) => {
+    const reqObj = {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      }
+    }
+    return fetch(`${API_LINK}api/v1/favorites?page=${pageNumber}`, reqObj)
+      .then(resp => resp.json())
+  },
+  fetchUserComments: (pageNumber) => {
+    const reqObj = {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      }
+    }
+    return fetch(`${API_LINK}api/v1/comments?page=${pageNumber}`, reqObj)
+      .then(resp => resp.json())
+  },
+  fetchUserRatings: (pageNumber) => {
+    const reqObj = {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      }
+    }
+    return fetch(`${API_LINK}api/v1/ratings?page=${pageNumber}`, reqObj)
+      .then(resp => resp.json())
+  },
 }

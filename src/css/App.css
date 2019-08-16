@@ -33,7 +33,7 @@ label {
   background-color: red;
   background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
   z-index: 2;
-  height: 9em;
+  min-height: 9em;
   padding: .5em;
   border-bottom: .1em solid #fff200;
 }
@@ -140,12 +140,16 @@ form input{
   color: #fff200;
   text-decoration: none;
 }
+
 .navbar a,
 .navbar div button{
   font-size: 1.2em;
   color: #fff200;
   background: none;
   border: none;
+}
+.navbar div button{
+  padding: 0;
 }
 .navbar img{
   width:5em;
@@ -184,19 +188,90 @@ form input{
 .create_comment input#title {
   border-bottom: grey .1em solid;
 }
-/* .login,
-.register {
-  width: 60%;
-  margin: 0 auto;
-  text-align: center;
-} */
-
-/* .login input,
-.register input{
-  margin: auto;
-} */
-/* .movie p,
-.movie h3,
-.movie a{
+.profile .profile_page{
+  border:  solid #FFF200 .1em;
+  margin-top: .5em;
+  padding: 2em;
+  height: 100%;
+}
+.profile .profile_nav{
+  /* margin-right: .5em; */
+  border-top: solid #FFF200 .1em;
+  border-left: solid #FFF200 .1em;
+  border-right: solid #FFF200 .1em;
+  text-decoration: none;
+  padding: .5em;
+  margin-bottom: .5em;
+  color: yellow;
+}
+.profile .active_profile{
+  background-color: #FFF200;
   color: red;
-} */
+}
+
+.navbar button.mobile_buttton{
+  display: none
+}
+
+@media (max-width: 800px)  {
+  .navbar{
+    min-height: .2em;
+  }
+  .container{
+    margin-top: 9em;
+  }
+  .movies{
+    grid-template-columns: 50% 50%;
+  }
+
+  .navbar .main{
+    flex-direction: column;
+    margin-left: 0;
+    width: 100%
+  }
+  .navbar .responsive{
+    display: none;
+  }
+
+  .navbar  button.mobile_buttton{
+    font-size: 1.9em;
+    display: block;
+    position: absolute;
+    top: .2em;
+    right: 1em;
+    background: none;
+    border: solid #FFF200 .1em;
+    border-radius: .5em;
+    color: #FFF200;
+  }
+
+  .search{
+    width: 90%;
+  }
+  .navbar button, .navbar a{
+    display: block;
+    margin-top: .8em;
+  }
+  .navbar h1{
+    font-size: 1.5em;
+    margin-bottom: .8em;
+  }
+  .navbar button, .navbar a{
+    margin-left: 0;
+  }
+  #search_input{
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+  }
+  .search button{
+    right: 3.9em;
+    top:6%;
+  }
+}
+
+@media (max-width: 500px)  {
+  .movies{
+    grid-template-columns: 100%;
+  }
+}
