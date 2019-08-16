@@ -69,7 +69,11 @@ label {
 }
 .movies a{
   color: #fff200;
-  /* text-decoration: none; */
+  text-decoration: none;
+  border: solid #FFF200 .1em;
+  border-radius: .5em;
+  color: #FFF200;
+  padding: .2em;
 }
 .movie img {
    width: 100%;
