@@ -11,7 +11,6 @@ export default {
     .then(resp => resp.json())
   },
   searchMovies: (term) =>{
-    // 'Authorization': `Bearer ${localStorage.getItem("user")}`,
     let reqObj = {
         method: 'POST',
         headers: {
@@ -20,7 +19,6 @@ export default {
         },
         body: JSON.stringify(term)
       }
-      // ?page=${pageNumber}
     return fetch(`${API_LINK}search`,reqObj)
     .then(resp => resp.json())
   },

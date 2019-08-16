@@ -271,7 +271,18 @@ form input{
 }
 
 @media (max-width: 500px)  {
+  .navbar h1{
+    display: block;
+    text-align: center;
+  }
+  .container{
+    margin-top: 10em;
+  }
   .movies{
     grid-template-columns: 100%;
+  }
+  .search button{
+    right: 2.3em;
+    top: -7%;
   }
 }
