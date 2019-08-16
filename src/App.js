@@ -35,6 +35,7 @@ class App extends Component {
           <Route exact path='/login' component={Login}/>
           <Route exact path='/register' component={Register}/>
           <Route exact path='/profile' component={ProfileContainer}/>
+          <Route exact path='/profile/:type' component={ProfileContainer}/>
           <Route exact path='/movies/all' component={MoviesContainer}/>
           <Route exact path='/movies/search/:term/:page' component={MovieSearchContainer}/>
           <Route exact path='/movies/:id' component={MovieShowContainer}/>
@@ -72,6 +73,16 @@ export default connect(null, mapDispatchToProps)(App);
 // // const mapStateToProps = (state) => {
 // //   return {
 // //     movie: state.movie
+// //   }
+// // }
+// // const mapDispatchToProps = dispatch => {
+// //   return {
+// //     fetchMovies: (movies) => {
+// //       dispatch(fetchMovies(movies))
+// //     },
+// //     setPageMax: (pageNumber) => {
+// //       dispatch(setPageMax(pageNumber))
+// //     }
 // //   }
 // // }
 // export default App;

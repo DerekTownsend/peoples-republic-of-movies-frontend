@@ -26,6 +26,7 @@ class Navbar extends Component {
   displayLogOutOption = () =>{
     return (
       <div>
+        <Link to="/profile">Profile</Link>
         <button onClick={this.handleLogout}>Logout</button>
       </div>
     )
@@ -39,7 +40,6 @@ class Navbar extends Component {
         <div className="main">
         <Search />
         <Link to="/movies/all">All Movies</Link>
-        <Link to="/profile">Profile</Link>
         {localStorage.getItem("user") ? this.displayLogOutOption() : this.displayLoginOptions()}
         </div>
       </div>
