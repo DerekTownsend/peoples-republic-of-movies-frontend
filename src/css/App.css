@@ -3,8 +3,9 @@ body{
   width: 100%;
   min-height: 100vh;
   /* background-color: #fff200;
-background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
-  background-color: red;
+background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+  background-color: red; */
+  background-color: blue;
   background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
 }
 
@@ -29,8 +30,9 @@ label {
   top:0;
   left: 0;
   /* background-color: #fff200;
-  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
-  background-color: red;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); 
+  background-color: red; */
+  background-color: blue;
   background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
   z-index: 2;
   min-height: 9em;
