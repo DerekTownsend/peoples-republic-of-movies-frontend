@@ -30,7 +30,7 @@ label {
   top:0;
   left: 0;
   /* background-color: #fff200;
-  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); 
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
   background-color: red; */
   background-color: blue;
   background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
@@ -76,6 +76,9 @@ label {
   border-radius: .5em;
   color: #FFF200;
   padding: .2em;
+  display: block;
+  width: 50%;
+  margin: .5em auto;
 }
 .movie img {
    width: 100%;
